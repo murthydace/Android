@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.local.growkart.dashboard.profile.PersonalDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dashboardBackgroundColor"
+        tools:context=".dashboard.profile.PersonalDetailsFragment">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/personal_container"
+                    style="@style/CardView.Light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:elevation="@dimen/dimen_8"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="@dimen/padding_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_medium">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_profile"
+                                style="@style/LatoRegularBlackMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Personal details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/font_medium"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/name_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Name" />
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@{viewmodel.user.name}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.name}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/phone_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Phone " />
+
+                            <TextView
+                                android:id="@+id/tv_phone_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@{viewmodel.user.phoneNumber}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_phone_number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:inputType="number"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.phoneNumber}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dob_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@string/dob" />
+
+                            <TextView
+                                android:id="@+id/tv_dob"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@{ viewmodel.user.dob}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_dob"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:inputType="date"
+                                android:text="@={ viewmodel.user.dob}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/sex_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Gender" />
+
+                            <TextView
+                                android:id="@+id/tv_gender"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:inputType="date"
+                                android:padding="@dimen/padding_medium"
+                                android:text="@{viewmodel.user.gender}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <Spinner
+                                android:id="@+id/spinner_gender"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:entries="@array/gender_array"
+                                android:onItemSelected="@{viewmodel::onGenderSelected}"
+                                android:padding="@dimen/padding_smallest"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardView.Light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:elevation="@dimen/dimen_8"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="@dimen/padding_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/personal_container">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_medium">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_address"
+                                style="@style/LatoBoldWhite"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Address"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/font_medium"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/plot_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="plot/flat no" />
+
+                            <TextView
+                                android:id="@+id/tv_flat_no"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.plotNo}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_flat_no"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:ellipsize="end"
+                                android:maxLines="3"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.plotNo}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/street_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Street" />
+
+                            <TextView
+                                android:id="@+id/tv_street"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.street}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_street"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:ellipsize="end"
+                                android:inputType="textCapSentences"
+                                android:maxLines="3"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.street}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/adress1_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:minHeight="@dimen/dimen_40"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Area/town" />
+
+                            <TextView
+                                android:id="@+id/tv_area"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:inputType="text"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.town}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_area"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:ellipsize="end"
+                                android:inputType="textCapSentences"
+                                android:maxLines="3"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.town}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/country_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:minHeight="@dimen/dimen_40"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Country" />
+
+                            <TextView
+                                android:id="@+id/tv_country"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@{viewmodel.user.address.country}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_country"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:ellipsize="end"
+                                android:inputType="textCapSentences"
+                                android:maxLines="3"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.country}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/post_code_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:minHeight="@dimen/dimen_40"
+                            android:orientation="horizontal"
+                            android:weightSum="4">
+
+                            <TextView
+                                style="@style/LatoRegularGreyMedium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="Post Code" />
+
+                            <TextView
+                                android:id="@+id/tv_post_code"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:ellipsize="end"
+                                android:inputType="text"
+                                android:maxLines="3"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@{viewmodel.user.address.postCode}"
+                                android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}" />
+
+                            <EditText
+                                android:id="@+id/et_post_code"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:background="@drawable/rectangular_border"
+                                android:inputType="textCapSentences"
+                                android:padding="@dimen/padding_smallest"
+                                android:text="@={viewmodel.user.address.postCode}"
+                                android:visibility="@{viewmodel.isEdit ? View.VISIBLE : View.GONE}" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:background="@drawable/bg_ripple_button"
+                    android:onClick="@{viewmodel::onSave}"
+                    android:text="@string/submit"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold"
+                    android:visibility="@{viewmodel.isEdit? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_sign_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:background="@drawable/bg_ripple_button"
+                    android:text="@{viewmodel.isUserLoggedIn ? @string/sign_out : @string/login }"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_18"
+                    android:textStyle="bold"
+                    android:visibility="@{viewmodel.isEdit? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent" />
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:elevation="11dp"
+            android:onClick="@{viewmodel::onEdit}"
+            android:tint="@android:color/white"
+            android:visibility="@{viewmodel.isEdit ? View.GONE : View.VISIBLE}"
+            app:backgroundTint="@color/colorPrimary"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

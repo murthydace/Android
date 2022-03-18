@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "792921953234",
+    "project_id": "grocery-3477b",
+    "storage_bucket": "grocery-3477b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792921953234:android:908c825e713a85c53bae0b",
+        "android_client_info": {
+          "package_name": "com.local.growkart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792921953234-6oss0o0d6picad74o9dbr5evnah6djh2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.local.growkart",
+            "certificate_hash": "19600ba8fbd27d06f4615a9f7e5319e93a8b88ea"
+          }
+        },
+        {
+          "client_id": "792921953234-o4eb9l1j4ks5rbabffocjruecaob33um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYjGVkcdLOsHfkAIAGwNFrhQLcxg0GGAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792921953234-o4eb9l1j4ks5rbabffocjruecaob33um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

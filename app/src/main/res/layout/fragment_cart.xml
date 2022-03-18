@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="isCartEmpty"
+            type="Boolean" />
+
+        <variable
+            name="showProgress"
+            type="Boolean" />
+
+        <variable
+            name="cartTotal"
+            type="String" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dashboardBackgroundColor"
+        tools:context=".dashboard.cart.CartFragment">
+
+        <ProgressBar
+            android:id="@+id/pg_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:visibility="@{showProgress? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:progressTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="@dimen/dimen_8"
+            tools:visibility="visible"/>
+
+        <LinearLayout
+            android:id="@+id/empty_cart_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_big"
+            android:visibility="@{isCartEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_100"
+                android:layout_marginBottom="@dimen/margin_big"
+                android:src="@drawable/ic_empty_cart" />
+
+            <TextView
+                style="@style/LatoBoldWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_product_in_cart_title"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/error_message"
+                style="@style/LatoRegularBlackMedium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@string/no_product_in_cart_message"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_large" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_big"
+            android:visibility="@{isCartEmpty ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/order_total_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pg_bar"
+            android:paddingBottom="@dimen/dimen_100"
+            tools:listitem="@layout/item_cart"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/order_total_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:visibility="@{isCartEmpty ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_order_total_label"
+                        style="@style/LatoRegularBlack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:gravity="start"
+                        android:text="Grand Total : "
+                        android:textSize="@dimen/font_medium" />
+
+                    <TextView
+                        android:id="@+id/tv_order_total_value"
+                        style="@style/LatoRegularBlackMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="@{cartTotal}"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/font_medium"
+                        tools:text="25" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_place_order"
+                    style="@style/GreenButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_medium"
+                    android:text="Place Order" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

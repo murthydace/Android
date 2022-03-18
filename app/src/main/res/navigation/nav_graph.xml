@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.local.growkart.splash.SplashFragment"
+        android:label="splashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.local.growkart.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_loginFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment">
+            <argument
+                android:name="verificationId"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.local.growkart.login.OTPFragment"
+        android:label="Verify OTP">
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_OTPFragment_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_OTPFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/home"
+        android:name="com.local.growkart.dashboard.home.HomeFragment"
+        android:label="Products"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_cart"
+            app:destination="@id/cart" />
+    </fragment>
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.local.growkart.dashboard.cart.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cart_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_cart_to_orderDetail"
+            app:destination="@id/orderDetail">
+            <argument
+                android:name="orderDetails"
+                app:argType="com.local.growkart.order.model.Order" />
+        </action>
+        <action
+            android:id="@+id/action_cart_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:uri="growkart://cart" />
+    </fragment>
+    <!--    <fragment-->
+    <!--        android:id="@+id/personalDetailsFragment"-->
+    <!--        android:name="com.local.growkart.dashboard.profile.ProfileFragment"-->
+    <!--        android:label="Account"-->
+    <!--        tools:layout="@layout/fragment_profile">-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_profile_to_loginFragment"-->
+    <!--            app:destination="@id/loginFragment" />-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_personalDetailsFragment_to_home2"-->
+    <!--            app:destination="@id/home" />-->
+    <!--    </fragment>-->
+    <fragment
+        android:id="@+id/orderDetail"
+        android:name="com.local.growkart.order.OrderDetailFragment"
+        android:label="Order Details"
+        tools:layout="@layout/fragment_order_details">
+        <argument
+            android:name="orderDetails"
+            app:argType="com.local.growkart.order.model.Order" />
+        <action
+            android:id="@+id/action_orderDetail_to_editOrderFragment"
+            app:destination="@id/editOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.local.growkart.dashboard.profile.PersonalDetailsFragment"
+        android:label="Personal Details">
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_profile_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/order"
+        android:name="com.local.growkart.order.OrderListFragment"
+        android:label="Orders">
+        <action
+            android:id="@+id/action_order_to_orderDetail"
+            app:destination="@id/orderDetail">
+            <argument
+                android:name="orderDetails"
+                app:argType="com.local.growkart.order.model.Order" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/editOrderFragment"
+        android:name="com.local.growkart.order.EditOrderFragment"
+        android:label="EditOrderFragment" >
+        <argument
+            android:name="order"
+            app:argType="com.local.growkart.order.model.Order" />
+        <action
+            android:id="@+id/action_editOrderFragment_to_orderDetail"
+            app:destination="@id/orderDetail" />
+    </fragment>
+</navigation>

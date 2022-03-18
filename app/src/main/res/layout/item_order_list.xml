@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="order"
+            type="com.local.growkart.order.model.Order" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        app:cardCornerRadius="@dimen/dimen_12">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium">
+
+            <ImageView
+                android:id="@+id/order_first_item_icon"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/margin_medium"
+                app:imageUrl="@{order.icon}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_toRightOf="@+id/order_first_item_icon"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        style="@style/LatoRegularGrey"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:maxLines="1"
+                        android:text="@string/order_date"
+                        android:textSize="@dimen/font_14" />
+
+                    <TextView
+                        android:id="@+id/tv_order_date"
+                        style="@style/LatoRegularBlack"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/font_14"
+                        app:orderDate="@{order}" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_first_product_name"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{order.getProductNames()}" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/margin_smallest"
+                    android:id="@+id/tv_additional_product_count"
+                    style="@style/LatoRegularBlackMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{order.items.size() >1? order.items.size() +` products` : ``}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/font_14" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    style="@style/LatoRegularBlack18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="end"
+                    android:text="@{order.status.value}"
+                    app:statusColor="@{order.status}" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

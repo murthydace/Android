@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="splashScreenStartColor">#4BDBDB</color>
+    <color name="splashScreenEndColor">#0C5757</color>
+    <color name="splashScreenCenterColor">#44CCCC</color>
+    <color name="dashboardBackgroundColor">#FFF3F1F1</color>
+    <color name="shadow_color">#0d32325d</color>
+    <color name="fab_counter_bg_color">#FFEB3B</color>
+    <color name="fab_counter_text_color">#201D07</color>
+    <color name="fab_counter_center_color">@android:color/white</color>
+    <color name="accent_transparent">#A383E1D8</color>
+    <color name="button_pressed_color">#ADF6EF</color>
+    <color name="snackBarbgColor">#EC4336</color>
+    <color name="grey">#838383</color>
+
+    <!--Status color -->
+    <color name="order_delivered">#8BC34A</color>
+    <color name="order_cancelled">#ED8260</color>
+    <color name="order_returned">#FFC107</color>
+    <color name="order_ordered">#CDDC39</color>
+    <color name="order_ready">#4A88B8</color>
+</resources>

@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:centerColor="@color/splashScreenCenterColor"
+        android:centerY="50%"
+        android:endColor="@color/splashScreenEndColor"
+        android:gradientRadius="1000"
+        android:startColor="@color/splashScreenStartColor"
+        android:type="radial" />
+    <corners android:radius="0dp" />
+</shape>

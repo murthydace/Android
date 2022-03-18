@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.local.growkart.order.model.OrderStatus" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="order"
+            type="com.local.growkart.order.model.Order" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dashboardBackgroundColor"
+        tools:context=".order.OrderDetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_medium">
+
+            <RelativeLayout
+                android:id="@+id/title_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:text="@{order.status.value}"
+                    android:textSize="@dimen/font_large"
+                    app:statusColor="@{order.status}" />
+
+                <ImageView
+                    android:id="@+id/iv_edit_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_edit_black_24dp"
+                    android:visibility="@{order.status == OrderStatus.Ordered ? View.VISIBLE : View.GONE}" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@+id/title_container" />
+
+            <LinearLayout
+                android:id="@+id/vg_order_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider">
+
+                <TextView
+                    android:id="@+id/tv_order_detail"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:text="@string/order_details"
+                    android:textSize="@dimen/font_medium" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_date"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_weight="4"
+                    android:gravity="end|bottom"
+                    android:maxLines="1"
+                    android:textSize="@dimen/font_14"
+                    app:orderDate="@{order}" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vg_order_detail" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/order_total_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_order_count_label"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:text="@string/label_n0_of_products"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/tv_order_count_value"
+                    style="@style/LatoBoldBlackSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_large" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_order_total_label"
+                    style="@style/LatoRegularBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:text="@string/grand_total"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/tv_order_total_value"
+                    style="@style/LatoBoldBlackSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_large" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

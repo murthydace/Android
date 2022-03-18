@@ -1,0 +1,128 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'dagger.hilt.android.plugin'
+android {
+    signingConfigs {
+        mock {
+            storeFile file("debug.keystore")
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+    //groovy
+    configurations.all {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
+    }
+
+//kotlin DSL
+    configurations.all {
+        resolutionStrategy {
+            force("org.antlr:antlr4-runtime:4.7.1")
+            force("org.antlr:antlr4-tool:4.7.1")
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs += 'build/generated/source/navigation-args'
+            }
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.local.growkart"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        mock {
+            debuggable true
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "API_URL", "\"https://dummy.restapiexample.com/api/v1/\""
+        }
+        debug {
+            buildConfigField "String", "API_URL", "\"https://dummy.restapiexample.com/api/v1/\""
+        }
+        release {
+            buildConfigField "String", "API_URL", "\"https://dummy.restapiexample.com/api/v1/\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation rootProject.ext.supportDependencies.appcompat
+    implementation rootProject.ext.supportDependencies.design
+    implementation rootProject.ext.supportDependencies.cardView
+    implementation rootProject.ext.supportDependencies.recyclerView
+    implementation rootProject.ext.supportDependencies.browser
+    implementation rootProject.ext.constraintLayout
+    implementation rootProject.ext.lifeCycleLegacy
+    implementation rootProject.ext.kotlin
+
+    implementation rootProject.ext.lifcycleNavigation.navigationFragment
+    implementation rootProject.ext.lifcycleNavigation.naviagationUI
+    implementation rootProject.ext.lifeCycleExtensions
+
+    api rootProject.ext.couroutine.coroutinecore
+    api rootProject.ext.couroutine.couroutine_android
+    implementation rootProject.ext.ktx.activity
+    implementation rootProject.ext.ktx.fragment
+    implementation rootProject.ext.gson
+    implementation platform(rootProject.ext.fireBase.bom)
+    implementation rootProject.ext.fireBase.auth
+    implementation rootProject.ext.fireBase.fireStore
+    implementation rootProject.ext.fireBase.analytics
+    implementation rootProject.ext.fireBase.messaging
+    implementation rootProject.ext.playserviceAuth
+
+
+//<!-- Third party-->
+    implementation rootProject.ext.picasso
+    implementation rootProject.ext.daggerHilt.hilt
+    kapt rootProject.ext.daggerHilt.hiltKotlin
+
+    implementation rootProject.ext.retrofit.retrofit
+    implementation rootProject.ext.retrofit.converter
+    implementation rootProject.ext.retrofit.loggingInterceptor
+
+    kapt "androidx.preference:preference-ktx:1.1.1"
+
+    //test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+repositories {
+    mavenCentral()
+}

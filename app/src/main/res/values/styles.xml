@@ -1,0 +1,118 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="snackbarStyle">@style/snackBarError</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="snackBarError" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/bg_snackbar</item>
+    </style>
+    <style name="LatoBoldWhite" parent="LatoBoldFontFamily">
+        <item name="android:textSize">@dimen/font_big</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LatoRegularGrey" parent="LatoFontFamily">
+        <item name="android:textSize">@dimen/font_big</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="MerryWeatherBoldWhite" parent="MerryWeatherFamily">
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="font">@font/merriweather_black</item>
+    </style>
+
+    <style name="LatoRegularBlack" parent="LatoFontFamily">
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoRegularBlack18" parent="LatoFontFamily">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoRegularBlackMedium" parent="LatoFontFamily">
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoRegularGreyMedium" parent="LatoFontFamily">
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="LatoBoldBlackSmall" parent="LatoBoldFontFamily">
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="font">@font/lato_regular</item>
+    </style>
+
+    <style name="CardViewStyle">
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">6</item>
+        <item name="android:shadowRadius">3</item>
+        <item name="android:shadowColor">@color/shadow_color</item>
+    </style>
+
+    <style name="ShadowLessButton" parent="LatoFontFamily">
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+
+    <style name="GreenButton" parent="ShadowLessButton">
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_btn_green_selector</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GreenButtonRipple" parent="ShadowLessButton">
+        <item name="background">@drawable/bg_ripple_button</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_20</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- fonts-->
+    <style name="LatoFontFamily">
+        <item name="android:fontFamily">@font/lato_font_family</item>
+    </style>
+
+    <style name="LatoBlackFontFamily">
+        <item name="android:fontFamily">@font/lato_black</item>
+    </style>
+
+    <style name="LatoBoldFontFamily">
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+    `
+
+    <style name="MerryWeatherFamily">
+        <item name="android:fontFamily">@font/merriweather_black</item>
+    </style>
+
+</resources>
